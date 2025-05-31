@@ -126,6 +126,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'exect|x86'">
     <OutputPath>bin\x86\exect\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProCompta|AnyCPU'">
+    <OutputPath>bin\ProCompta\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProCompta|x64'">
+    <OutputPath>bin\x64\ProCompta\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProCompta|x86'">
+    <OutputPath>bin\x86\ProCompta\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.104.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.104.2\lib\netstandard2.0\ClosedXML.dll</HintPath>
