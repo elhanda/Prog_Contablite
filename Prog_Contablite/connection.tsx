@@ -1,0 +1,1 @@
+﻿Server=.\SQLEXPRESS;Database=base_compta_soc;Integrated Security=True;

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Journal_Comptable_Data" targetNamespace="http://tempuri.org/Journal_Comptable_Data.xsd" xmlns:mstns="http://tempuri.org/Journal_Comptable_Data.xsd" xmlns="http://tempuri.org/Journal_Comptable_Data.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Journal_Comptable_Data" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Journal_Comptable_Data" msprop:Generator_UserDSName="Journal_Comptable_Data">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="J_Code" msprop:Generator_ColumnVarNameInTable="columnJ_Code" msprop:Generator_ColumnPropNameInRow="J_Code" msprop:Generator_ColumnPropNameInTable="J_CodeColumn" msprop:Generator_UserColumnName="J_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="J_Libelle" msprop:Generator_ColumnVarNameInTable="columnJ_Libelle" msprop:Generator_ColumnPropNameInRow="J_Libelle" msprop:Generator_ColumnPropNameInTable="J_LibelleColumn" msprop:Generator_UserColumnName="J_Libelle" type="xs:string" minOccurs="0" />
+              <xs:element name="J_Compte" msprop:Generator_ColumnVarNameInTable="columnJ_Compte" msprop:Generator_ColumnPropNameInRow="J_Compte" msprop:Generator_ColumnPropNameInTable="J_CompteColumn" msprop:Generator_UserColumnName="J_Compte" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

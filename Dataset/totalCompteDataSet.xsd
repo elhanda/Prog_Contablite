@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="totalCompteDataSet" targetNamespace="http://tempuri.org/totalCompteDataSet.xsd" xmlns:mstns="http://tempuri.org/totalCompteDataSet.xsd" xmlns="http://tempuri.org/totalCompteDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="totalCompteDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="totalCompteDataSet" msprop:Generator_UserDSName="totalCompteDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="P_Code" msprop:Generator_ColumnVarNameInTable="columnP_Code" msprop:Generator_ColumnPropNameInRow="P_Code" msprop:Generator_ColumnPropNameInTable="P_CodeColumn" msprop:Generator_UserColumnName="P_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="p_compteDebut" msprop:Generator_ColumnVarNameInTable="columnp_compteDebut" msprop:Generator_ColumnPropNameInRow="p_compteDebut" msprop:Generator_ColumnPropNameInTable="p_compteDebutColumn" msprop:Generator_UserColumnName="p_compteDebut" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CompteFin" msprop:Generator_ColumnVarNameInTable="columnP_CompteFin" msprop:Generator_ColumnPropNameInRow="P_CompteFin" msprop:Generator_ColumnPropNameInTable="P_CompteFinColumn" msprop:Generator_UserColumnName="P_CompteFin" type="xs:string" minOccurs="0" />
+              <xs:element name="P_text" msprop:Generator_ColumnVarNameInTable="columnP_text" msprop:Generator_ColumnPropNameInRow="P_text" msprop:Generator_ColumnPropNameInTable="P_textColumn" msprop:Generator_UserColumnName="P_text" type="xs:string" minOccurs="0" />
+              <xs:element name="TYPE_DEBUT" msprop:Generator_ColumnVarNameInTable="columnTYPE_DEBUT" msprop:Generator_ColumnPropNameInRow="TYPE_DEBUT" msprop:Generator_ColumnPropNameInTable="TYPE_DEBUTColumn" msprop:Generator_UserColumnName="TYPE_DEBUT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TYPE_CREDI" msprop:Generator_ColumnVarNameInTable="columnTYPE_CREDI" msprop:Generator_ColumnPropNameInRow="TYPE_CREDI" msprop:Generator_ColumnPropNameInTable="TYPE_CREDIColumn" msprop:Generator_UserColumnName="TYPE_CREDI" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
