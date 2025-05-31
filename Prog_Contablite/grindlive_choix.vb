@@ -8,7 +8,7 @@ Imports CrystalDecisions.Shared
 Imports System.Data.SqlClient
 
 Public Class grindlive_choix
-    Dim con As SqlConnection
+    ' Dim con As SqlConnection
     Dim cmd As SqlCommand
     Dim cmd1 As SqlCommand
     Dim ds As DataSet = New DataSet()

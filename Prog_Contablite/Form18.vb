@@ -34,8 +34,8 @@ Public Class Form18
     Dim sum As Integer = 0
     Private i As Integer
     Public ind As Boolean
-    Dim con As SqlConnection
-    Dim con1 As SqlConnection
+    '  Dim con As SqlConnection
+    '  Dim con1 As SqlConnection
     'Sub Module1.connecter()
     '    'If () Then
 

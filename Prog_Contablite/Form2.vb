@@ -5,7 +5,7 @@ Imports System.Data.OleDb
 Imports System.IO
 Public Class Form2
 
-    Dim con As SqlConnection
+    '  Dim con As SqlConnection
     Dim con1 As SqlConnection
     Dim cmd As SqlCommand
     Dim ds As DataSet = New DataSet()

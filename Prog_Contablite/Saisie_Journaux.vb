@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Data.OleDb
 
 Public Class Saisie_Journaux
-    Dim con As SqlConnection
+
     Dim cmd As SqlCommand
     Dim ds As DataSet = New DataSet()
     Dim adapt As SqlDataAdapter

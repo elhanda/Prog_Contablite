@@ -822,7 +822,7 @@ Public Class Ecriture
 
 
     Public Class Form20
-        Dim con As SqlConnection
+        ''  Dim con As SqlConnection
         Dim cmd As SqlCommand
         Dim ds As DataSet = New DataSet()
         Dim adapt As SqlDataAdapter

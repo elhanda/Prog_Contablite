@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Imports System.Data.OleDb
 Public Class Apercu_Journal
 
-    Dim con As SqlConnection
+    '   Dim con As SqlConnection
     Dim cmd As SqlCommand
     Dim ds As DataSet = New DataSet()
     Dim adapt As SqlDataAdapter

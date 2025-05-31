@@ -8,7 +8,7 @@ Imports CrystalDecisions.Shared
 Imports System.Data.SqlClient
 
 Public Class list_Edite_Journalle
-    Dim con As SqlConnection
+    '  Dim con As SqlConnection
     Dim cmd As SqlCommand
     Dim ds As DataSet = New DataSet()
     Dim adapt As SqlDataAdapter

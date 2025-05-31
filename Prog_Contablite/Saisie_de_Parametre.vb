@@ -6,7 +6,7 @@ Imports System.Data.OleDb
 
 
 Public Class Saisie_de_Parametre
-    Dim con As SqlConnection
+    ''  Dim con As SqlConnection
     Dim cmd As SqlCommand
     Dim ds As DataSet = New DataSet()
     Dim adapt As SqlDataAdapter
