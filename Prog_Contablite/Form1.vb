@@ -191,13 +191,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub BilanToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BilanToolStripMenuItem.Click
 
-    End Sub
-
-    Private Sub BalenceReportFinalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BalenceReportFinalToolStripMenuItem.Click
-
-    End Sub
 End Class
 
 

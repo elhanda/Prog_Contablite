@@ -17,7 +17,7 @@ Public Class creat_soc
 
 
     Sub aff()
-        Module1.connecter_soc()
+        connecter_soc()
 
         Try
             Dim searchQuery As String = "Select * From Fsociete"
@@ -35,7 +35,7 @@ Public Class creat_soc
 
     Sub CreateDatabase(dbName As String, CodeSoc As String)
         Try
-            Module1.connecter_soc()
+            connecter_soc()
 
             Dim command As New SqlCommand("[CreateDatabase_base01]", con)
             command.CommandType = CommandType.StoredProcedure
@@ -1366,7 +1366,7 @@ Public Class creat_soc
                 Exit Sub
             End If
 
-            Module1.connecter_soc()
+            connecter_soc()
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to add?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -1492,7 +1492,7 @@ Public Class creat_soc
         'Me.WindowState = FormWindowState.Maximized
         'Me.MaximizeBox = True
 
-        Module1.connecter()
+        'Module1.connecter()
         GroupBox4.Visible = False
         GroupBox2.Visible = True
         TextBox1.Enabled = False
@@ -1511,6 +1511,8 @@ Public Class creat_soc
         TextBox14.Enabled = False
         TextBox9.Enabled = False
         TextBox5.Enabled = False
+        aff()
+
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
