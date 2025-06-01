@@ -198,6 +198,33 @@ Public Class editjournal
 
             Dim report As New ReportDocument()
             report.Load(reportPath)
+
+            ' 🔧 Set new database connection
+            Dim crConnectionInfo As New ConnectionInfo()
+            With crConnectionInfo
+                .ServerName = con.DataSource ' OR "localhost"
+                .DatabaseName = con.Database '"base_compta_" & Access.n2
+                '.UserID = "your_user"
+                '.Password = "your_password"
+                .IntegratedSecurity = true ' or True if using Windows Auth
+            End With
+
+            For Each table As Table In report.Database.Tables
+                Dim logonInfo As TableLogOnInfo = table.LogOnInfo
+                logonInfo.ConnectionInfo = crConnectionInfo
+                table.ApplyLogOnInfo(logonInfo)
+                table.Location = table.Name ' optional cleanup
+            Next
+
+            For Each subreport As ReportDocument In report.Subreports
+                For Each subTable As Table In subreport.Database.Tables
+                    Dim logonInfo As TableLogOnInfo = subTable.LogOnInfo
+                    logonInfo.ConnectionInfo = crConnectionInfo
+                    subTable.ApplyLogOnInfo(logonInfo)
+                    subTable.Location = subTable.Name
+                Next
+            Next
+
             report.SetDataSource(ds)
 
             ' 📦 Paramètres

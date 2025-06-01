@@ -215,7 +215,37 @@ Module Module1
 
         Return (total1, total2)
     End Function
+    Public Structure DBConfig
+        Public Server As String
+        Public Database As String
+        Public IntegratedSecurity As Boolean
+        Public Username As String
+        Public Password As String
+    End Structure
 
+    Public Function GetDBConfig(databaseName As String) As DBConfig
+        Dim configPath As String = GetConfigPath()
+
+        Dim cfg As New DBConfig With {.Database = databaseName, .IntegratedSecurity = True}
+
+        For Each line In File.ReadAllLines(configPath)
+            Dim parts = line.Split("="c)
+            If parts.Length <> 2 Then Continue For
+
+            Select Case parts(0).Trim().ToLower()
+                Case "server"
+                    cfg.Server = parts(1).Trim()
+                Case "integratedsecurity"
+                    cfg.IntegratedSecurity = parts(1).Trim().ToLower() = "true"
+                Case "username"
+                    cfg.Username = parts(1).Trim()
+                Case "password"
+                    cfg.Password = parts(1).Trim()
+            End Select
+        Next
+
+        Return cfg
+    End Function
 End Module
 
 
