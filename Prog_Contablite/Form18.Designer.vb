@@ -34,7 +34,7 @@ Partial Class Form18
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.ReportSource = "E:\Prog_ComptabiliteAct\Prog_Contablite\Liasses_Fiscales.rpt"
+        Me.CrystalReportViewer1.ReportSource = "C:\CrystalReport\Liasses_Fiscales.rpt"
         Me.CrystalReportViewer1.Size = New System.Drawing.Size(1165, 614)
         Me.CrystalReportViewer1.TabIndex = 0
         '

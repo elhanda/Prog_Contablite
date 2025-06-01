@@ -107,7 +107,7 @@ Public Class Access
                 nom_Soc = reader("s_nom").ToString()
                 exercice = reader("s_excerc").ToString()
                 adr1_soc = reader("s_adr1").ToString()
-                ' PathCryst = If(reader("s_pathCryst").ToString() Is DBNull.Value OrElse reader("s_pathCryst").ToString() = "", "c:\Crystal_Report\", reader("s_pathCryst").ToString())
+                PathCryst = If(reader("s_pathCryst").ToString() Is DBNull.Value OrElse reader("s_pathCryst").ToString() = "", "c:\Crystal_Report\", reader("s_pathCryst").ToString())
                 n9 = exercice
             Else
                 PathCryst = "c:\crystalReport\"

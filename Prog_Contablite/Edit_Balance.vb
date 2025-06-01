@@ -224,7 +224,8 @@ Public Class Edit_Balance
         Dim adapter As New SqlDataAdapter(command)
         Dim table1 As New DataTable()
         adapter.Fill(table1)
-        DataGridView1.DataSource = table1
+
+
 
         Dim report As New ReportDocument()
         report.Load(reportPath)
