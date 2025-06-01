@@ -43,7 +43,6 @@ Partial Class grindlive_choix
         Me.Label12 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -77,7 +76,7 @@ Partial Class grindlive_choix
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.Highlight
         Me.Button1.Font = New System.Drawing.Font("Segoe UI Emoji", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(658, 754)
+        Me.Button1.Location = New System.Drawing.Point(442, 754)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(149, 39)
@@ -194,7 +193,7 @@ Partial Class grindlive_choix
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(214, 39)
         Me.Button2.TabIndex = 105
-        Me.Button2.Text = "Apercu Model1"
+        Me.Button2.Text = "Apercu"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Label7
@@ -277,25 +276,12 @@ Partial Class grindlive_choix
         Me.DateTimePicker2.Size = New System.Drawing.Size(268, 26)
         Me.DateTimePicker2.TabIndex = 117
         '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.SystemColors.Highlight
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI Emoji", 18.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(437, 754)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(213, 39)
-        Me.Button3.TabIndex = 118
-        Me.Button3.Text = "Apercu Model 2"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
         'grindlive_choix
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.ClientSize = New System.Drawing.Size(1412, 823)
-        Me.Controls.Add(Me.Button3)
+        Me.ClientSize = New System.Drawing.Size(1280, 823)
         Me.Controls.Add(Me.DateTimePicker2)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label11)
@@ -348,5 +334,4 @@ Partial Class grindlive_choix
     Friend WithEvents Label12 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents DateTimePicker2 As DateTimePicker
-    Friend WithEvents Button3 As Button
 End Class

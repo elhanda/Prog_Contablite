@@ -296,186 +296,89 @@ Public Class grindlive_choix
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
-            ' 🔁 Vérifie que le DataGridView a une source
+            ' 🔁 Check if there is data to print
             If DataGridView1.DataSource Is Nothing Then
                 MessageBox.Show("Aucune donnée à imprimer", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Exit Sub
             End If
 
-            ' 🧠 Clone le DataTable pour ne pas toucher à l'original
+            ' 📥 Get selected parameters
+            Dim compte1 As String = ComboBox3.Text
+            Dim compte2 As String = ComboBox4.Text
+            Dim mois1 As Integer = DateTimePicker1.Value.Month
+            Dim jour1 As Integer = DateTimePicker1.Value.Day
+            Dim mois2 As Integer = DateTimePicker2.Value.Month
+            Dim jour2 As Integer = DateTimePicker2.Value.Day
+
+            ' 🧠 Clone the original data table
             Dim originalTable As DataTable = CType(DataGridView1.DataSource, DataTable)
             Dim dt As DataTable = originalTable.Copy()
 
-            ' 🗃 Ajout au DataSet
+            ' 🗃 Add to DataSet
             dt.TableName = "DataTable1"
             Dim ds As New DataSet("NewDataSet")
             ds.Tables.Add(dt)
 
-            ' 📊 Debug : combien de lignes ?
-            'MessageBox.Show("📊 Nombre de lignes envoyées au rapport : " & dt.Rows.Count)
-
-
-
-            ' 📍 Lien obligatoire avec Crystal Report
-            Dim reportPath As String = Access.PathCryst + "Edit_Glivre_001.rpt"
+            ' 📍 Crystal Report file path
+            Dim reportPath As String = Access.PathCryst & "Edit_Glivre_001.rpt"
             If Not IO.File.Exists(reportPath) Then
                 MessageBox.Show("❌ Fichier Crystal introuvable : " & reportPath)
                 Exit Sub
             End If
-            'Dim exercice = exec_proc.n1
-            Dim compte1 = ComboBox3.Text
-            Dim compte2 = ComboBox4.Text
-            Dim mois1 = DateTimePicker1.Value.Month
-            Dim jour1 As Integer = DateTimePicker1.Value.Day
-            Dim mois2 = DateTimePicker2.Value.Month
-            Dim jour2 As Integer = DateTimePicker2.Value.Day
 
+            ' 📦 Load report
             Dim report As New ReportDocument()
             report.Load(reportPath)
+            report.SetDataSource(ds)
 
-            ' 🔧 Set new database connection
-            Dim crConnectionInfo As New ConnectionInfo()
-            With crConnectionInfo
-                .ServerName = con.DataSource ' OR "localhost"
-                .DatabaseName = con.Database '"base_compta_" & Access.n2
-                '.UserID = "your_user"
-                '.Password = "your_password"
-                .IntegratedSecurity = True ' or True if using Windows Auth
-            End With
+            ' 🔧 Set database connection info (if needed)
+            Dim crConnectionInfo As New ConnectionInfo With {
+            .ServerName = con.DataSource,
+            .DatabaseName = con.Database,
+            .IntegratedSecurity = True
+        }
 
+            ' Apply connection info to each table
             For Each table As Table In report.Database.Tables
                 Dim logonInfo As TableLogOnInfo = table.LogOnInfo
                 logonInfo.ConnectionInfo = crConnectionInfo
                 table.ApplyLogOnInfo(logonInfo)
-                table.Location = table.Name ' optional cleanup
             Next
 
+            ' Apply to subreports if any
             For Each subreport As ReportDocument In report.Subreports
                 For Each subTable As Table In subreport.Database.Tables
                     Dim logonInfo As TableLogOnInfo = subTable.LogOnInfo
                     logonInfo.ConnectionInfo = crConnectionInfo
                     subTable.ApplyLogOnInfo(logonInfo)
-                    subTable.Location = subTable.Name
                 Next
             Next
 
-
-            report.SetDataSource(ds)
-
-
-            'MsgBox(PathCryst)
-            'MsgBox(exec_proc.n1)
-            'MsgBox(compte1)
-            'MsgBox(compte2)
-            'MsgBox(mois1)
-            'MsgBox(mois2)
-
-            'MsgBox(jour1)
-            'MsgBox(jour2)
-            'Dim currentDirectory As String = System.IO.Directory.GetCurrentDirectory()
-            'MessageBox.Show("📂 Répertoire actuel : " & currentDirectory)
-            'MsgBox(reportPath)
-
-            ' 📦 Paramètres
-            report.SetParameterValue("Exec", 2004)
+            ' 🎯 Pass parameters
+            report.SetParameterValue("Exec", exec_proc.n1)
             report.SetParameterValue("CompteDebut", compte1)
             report.SetParameterValue("CompteFin", compte2)
-            report.SetParameterValue("mois1", 1)
-            report.SetParameterValue("mois2", 12)
-            report.SetParameterValue("jour1", 1)
-            report.SetParameterValue("jour2", 31)
+            report.SetParameterValue("mois1", mois1)
+            report.SetParameterValue("mois2", mois2)
+            report.SetParameterValue("jour1", jour1)
+            report.SetParameterValue("jour2", jour2)
             report.SetParameterValue("chk1", 1)
             report.SetParameterValue("chk2", 1)
+            report.SetParameterValue("Nom_Soc", Access.nom_Soc)
 
-            report.SetParameterValue("Nom_Soc", Access.nom_soc)
-
-
-            ' 🖥️ Affichage
+            ' 🖥️ Show report
             Dim reportForm As New Form()
-            Dim crystalReportViewer As New CrystalDecisions.Windows.Forms.CrystalReportViewer() With {
-        .Dock = DockStyle.Fill,
-        .ReportSource = report
-    }
-            reportForm.Controls.Add(crystalReportViewer)
+            Dim viewer As New CrystalDecisions.Windows.Forms.CrystalReportViewer() With {
+            .Dock = DockStyle.Fill,
+            .ReportSource = report
+        }
+            reportForm.Controls.Add(viewer)
             reportForm.WindowState = FormWindowState.Maximized
             reportForm.Show()
 
         Catch ex As Exception
             MessageBox.Show("❌ Erreur d'affichage Crystal Report : " & ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
-
-        '  Try
-
-
-
-        ' 🧠 Clone le DataTable pour ne pas toucher à l'original
-        '    Dim originalTable As DataTable = CType(DataGridView1.DataSource, DataTable)
-        '    Dim dt As DataTable = originalTable.Copy()
-
-
-
-        '    ' 🗃 Ajout au DataSet
-        '    dt.TableName = "DataTable1"
-        '    Dim ds As New DataSet("NewDataSet")
-        '    ds.Tables.Add(dt)
-
-
-
-        '    ' ✅ Chemin du rapport .rpt
-        '    Dim reportPath As String = Access.PathCryst + "Edit_Glivre_001.rpt"
-        '    'Dim reportPath As String = Access.PathCryst + "crystalreport15.rpt"
-
-
-        '    If Not IO.File.Exists(reportPath) Then
-        '        MessageBox.Show("Fichier Crystal Report introuvable : " & reportPath, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        '        Exit Sub
-        '    End If
-
-        '    ' 📦 Charger le rapport
-        '    Dim report As New ReportDocument()
-        '    report.Load(reportPath)
-        '    report.SetDataSource(ds)
-
-
-        '    ' 📋 Lire les paramètres
-        '    'Dim exercice = exec_proc.n1
-        '    Dim compte1 = ComboBox3.Text
-        '    Dim compte2 = ComboBox4.Text
-        '    Dim moiss1 = DateTimePicker1.Value.Month
-        '    Dim jour1 As Integer = DateTimePicker1.Value.Day
-
-        '    Dim moiss2 = DateTimePicker2.Value.Month
-        '    Dim jour2 As Integer = DateTimePicker2.Value.Day
-
-
-        '    ' 🎯 Passer les paramètres au rapport
-
-        '    report.SetParameterValue("Exec", exec_proc.n1)
-        '    report.SetParameterValue("CompteDebut", compte1)
-        '    report.SetParameterValue("CompteFin", compte2)
-        '    report.SetParameterValue("mois1", moiss1)
-        '    report.SetParameterValue("mois2", moiss2)
-        '    report.SetParameterValue("jour1", jour1)
-        '    report.SetParameterValue("jour2", jour2)
-        '    report.SetParameterValue("chk1", 1)
-        '    report.SetParameterValue("chk2", 1)
-        '    report.SetParameterValue("Nom_soc", Access.nom_soc)
-
-
-        '    ' 🖥️ Affichage
-        '    Dim reportForm As New Form()
-        '    Dim crystalReportViewer As New CrystalDecisions.Windows.Forms.CrystalReportViewer() With {
-        '    .Dock = DockStyle.Fill,
-        '    .ReportSource = report
-        '}
-        '    reportForm.Controls.Add(crystalReportViewer)
-        '    reportForm.WindowState = FormWindowState.Maximized
-        '    reportForm.Show()
-
-        'Catch ex As Exception
-        '    MessageBox.Show("Erreur Crystal : " & ex.Message, "💥 Exception", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End Try
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
@@ -505,7 +408,7 @@ Public Class grindlive_choix
         'End If
     End Sub
 
-    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs)
         Try
             ' ✅ Chemin du rapport .rpt
             ' Dim reportPath As String = "e:\Prog_ComptabiliteAct\Prog_Contablite\crystalreprt14" & Access.n2 & ".rpt"
@@ -569,7 +472,7 @@ Public Class grindlive_choix
             report.SetParameterValue("jour1", jour1)
             report.SetParameterValue("jour2", jour2)
 
-            report.SetParameterValue("Nom_soc", Access.nom_soc)
+            report.SetParameterValue("Nom_soc", Access.nom_Soc)
 
 
             ' 🖥️ Affichage Crystal
