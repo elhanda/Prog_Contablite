@@ -737,5 +737,8 @@
   <ItemGroup>
     <Folder Include="Crystal report\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="connextionconfig\db_config.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

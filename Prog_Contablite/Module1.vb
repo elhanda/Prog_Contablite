@@ -9,7 +9,7 @@ Imports System.Configuration
 
 Module Module1
 
-    Public con As SqlConnection
+    '  Public con As SqlConnection
     Public table1 As New DataTable
     Public table2 As New DataTable
     Public table3 As New DataTable
@@ -19,74 +19,95 @@ Module Module1
     Private ReadOnly ConfigurationManager As Object
 
 
+    'Public Sub connecter()
+    '    Try
+    '        ' Configurateur / Chemin / Chaine de connexion
+    '        Dim connectionString As String = "Server=DESKTOP-PAIF7LI;Database=base_compta_" & Access.n2 & ";Integrated Security=True;"
+    '        con = New SqlConnection(connectionString)
+    '        con.Open()
+    '        'MessageBox.Show("Connecté à base_compta_" & Access.n2 & con.Database)
+    '    Catch ex As Exception
+    '        MessageBox.Show("Erreur connexion base_compta_" & Access.n2 & ex.Message)
+    '    End Try
+    'End Sub
+    'Public Sub connecter_soc()
+    '    Try
+    '        ' Configurateur / Chemin / Chaine de connexion
+    '        Dim connectionString As String = "Server=DESKTOP-PAIF7LI;Database=base_compta_soc;Integrated Security=True;"
+    '        con = New SqlConnection(connectionString)
+    '        con.Open()
+    '        'MessageBox.Show("Connecté à base_compta_soc : " & con.Database)
+    '    Catch ex As Exception
+    '        MessageBox.Show("Erreur connexion base_compta_soc : " & ex.Message)
+    '    End Try
+    'End Sub
+
+    Public con As SqlConnection
+
+    Private Function GetConfigPath() As String
+        Dim configPath As String = Path.Combine(Application.StartupPath, "connextionconfig\db_config.txt")
+
+        If Not File.Exists(configPath) Then
+            Throw New FileNotFoundException("Configuration file not found: " & configPath)
+        End If
+
+        Return configPath
+    End Function
+
+    Private Function GetConnectionString(databaseName As String) As String
+        Dim configPath As String = GetConfigPath()
+
+        If Not File.Exists(configPath) Then
+            Throw New FileNotFoundException("Configuration file not found: " & configPath)
+        End If
+
+        Dim server As String = ""
+        Dim integratedSecurity As Boolean = True
+        Dim username As String = ""
+        Dim password As String = ""
+
+        For Each line In File.ReadAllLines(configPath)
+            Dim parts = line.Split("="c)
+            If parts.Length <> 2 Then Continue For
+
+            Select Case parts(0).Trim().ToLower()
+                Case "server"
+                    server = parts(1).Trim()
+                Case "integratedsecurity"
+                    integratedSecurity = parts(1).Trim().ToLower() = "true"
+                Case "username"
+                    username = parts(1).Trim()
+                Case "password"
+                    password = parts(1).Trim()
+            End Select
+        Next
+
+        If integratedSecurity Then
+            Return $"Server={server};Database={databaseName};Integrated Security=True;"
+        Else
+            Return $"Server={server};Database={databaseName};User ID={username};Password={password};"
+        End If
+    End Function
+
     Public Sub connecter()
         Try
-            ' Configurateur / Chemin / Chaine de connexion
-            Dim connectionString As String = "Server=DESKTOP-PAIF7LI;Database=base_compta_" & Access.n2 & ";Integrated Security=True;"
+            Dim connectionString = GetConnectionString("base_compta_" & Access.n2)
             con = New SqlConnection(connectionString)
             con.Open()
-            'MessageBox.Show("Connecté à base_compta_" & Access.n2 & con.Database)
         Catch ex As Exception
-            MessageBox.Show("Erreur connexion base_compta_" & Access.n2 & ex.Message)
+            MessageBox.Show("Erreur connexion base_compta_" & Access.n2 & ": " & ex.Message)
         End Try
     End Sub
+
     Public Sub connecter_soc()
         Try
-            ' Configurateur / Chemin / Chaine de connexion
-            Dim connectionString As String = "Server=DESKTOP-PAIF7LI;Database=base_compta_soc;Integrated Security=True;"
+            Dim connectionString = GetConnectionString("base_compta_soc")
             con = New SqlConnection(connectionString)
             con.Open()
-            'MessageBox.Show("Connecté à base_compta_soc : " & con.Database)
         Catch ex As Exception
-            MessageBox.Show("Erreur connexion base_compta_soc : " & ex.Message)
+            MessageBox.Show("Erreur connexion base_compta_soc: " & ex.Message)
         End Try
     End Sub
-
-
-
-
-    'Public Function GetRepertoireBase() As String
-    '    Try
-    '        If File.Exists("connexion.txt") Then
-    '            Dim chaine = File.ReadAllText("connexion.txt")
-    '            Dim builder As New SqlConnectionStringBuilder(chaine)
-
-    '            If builder.ContainsKey("AttachDbFilename") Then
-    '                Dim cheminMdf = builder("AttachDbFilename").ToString()
-    '                'MsgBox(cheminMdf)
-    '                Return Path.GetDirectoryName(cheminMdf)
-    '            Else
-    '                MessageBox.Show("Aucun AttachDbFilename trouvé dans la chaîne de connexion.")
-    '                Return ""
-    '            End If
-    '        Else
-    '            MessageBox.Show("Fichier connexion.txt introuvable.")
-    '            Return ""
-    '        End If
-    '    Catch ex As Exception
-    '        MessageBox.Show("Erreur récupération chemin : " & ex.Message)
-    '        Return ""
-    '    End Try
-    'End Function
-
-    'Public Sub ChargerEtatDepuisBase(nomEtat As String)
-    '    Dim dossierBase = GetRepertoireBase()
-    '    If dossierBase = "" Then Exit Sub
-
-    '    Dim cheminRpt = Path.Combine(dossierBase, nomEtat)
-
-    '    If Not File.Exists(cheminRpt) Then
-    '        MessageBox.Show("Fichier RPT introuvable : " & cheminRpt)
-    '        Exit Sub
-    '    End If
-
-    '    Dim report As New ReportDocument()
-    '    report.Load(cheminRpt)
-
-    '    Dim viewer As New CrystalReportViewer()
-    '    viewer.ReportSource = report
-    '    viewer.Show()
-    'End Sub
 
     Public Sub ChargerExercices(combo As ComboBox, codeSociete As String)
         Try
