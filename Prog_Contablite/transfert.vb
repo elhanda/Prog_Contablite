@@ -20,7 +20,6 @@ Public Class transfert
     '    End Sub
 
 
-
     '    Private Sub btnImporter_Click(sender As Object, e As EventArgs) Handles btnImporter.Click
     '        Try
     '            Dim dbfPath As String = "C:\DBF\"   ' Chemin où se trouve ton ecriture.dbf

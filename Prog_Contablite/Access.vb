@@ -132,7 +132,9 @@ Public Class Access
             End If
             verif()
             If ok = 1 Then
+                Me.Hide()
                 exec_proc.Show()
+
             End If
         Catch ex As Exception
             MessageBox.Show("Error while connecting to SQL Server." & ex.Message, "info", MessageBoxButtons.OK, MessageBoxIcon.Error)

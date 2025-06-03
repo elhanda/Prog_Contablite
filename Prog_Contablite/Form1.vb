@@ -116,7 +116,7 @@ Public Class Form1
 
     Private Sub ModelEcrituresToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ModelEcrituresToolStripMenuItem.Click
         Me.Hide()
-        Edit_journaux.Show()
+        'Edit_journaux.Show()
 
     End Sub
 
@@ -191,7 +191,9 @@ Public Class Form1
 
     End Sub
 
+    Private Sub ParametrageDiversToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParametrageDiversToolStripMenuItem.Click
 
+    End Sub
 End Class
 
 

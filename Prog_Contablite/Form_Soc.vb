@@ -51,4 +51,8 @@
     Private Sub ParamétrageComptesToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ParamétrageComptesToolStripMenuItem.Click
         ParametrageCompte.Show()
     End Sub
+
+    Private Sub ParametresGénérauxlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParametresGénérauxlToolStripMenuItem.Click
+
+    End Sub
 End Class

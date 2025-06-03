@@ -24,7 +24,7 @@ Public Class Saisie_Journaux
     Sub del(id)
         Try
             Dim dialog As DialogResult
-            dialog = MessageBox.Show("do you reelly whant to add ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dialog = MessageBox.Show("do you reelly whant to Delete ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.Yes Then
 
                 Dim req As String = "delete from FJournal where J_CODE=N'" + id + "'"
@@ -45,7 +45,7 @@ Public Class Saisie_Journaux
     Sub modif(id, Name, ens)
         Try
             Dim dialog As DialogResult
-            dialog = MessageBox.Show("do you reelly whant to add ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dialog = MessageBox.Show("do you reelly whant to Modify ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.Yes Then
                 Dim req As String = " 
 update FJournal set J_COMPTE=N'" & id & "',J_LIBELLE=N'" & Name & "' where J_CODE =N'" & ens & "'"

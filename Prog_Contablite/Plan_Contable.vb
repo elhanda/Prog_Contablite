@@ -24,7 +24,7 @@ Public Class Plan_Contable
     Sub del(id)
         Try
             Dim dialog As DialogResult
-            dialog = MessageBox.Show("do you reelly whant to add ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dialog = MessageBox.Show("do you reelly whant to Delete ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.Yes Then
 
                 Dim req As String = "delete  from FPlanComptable where C_CODE='" + id + "'"
@@ -45,7 +45,7 @@ Public Class Plan_Contable
     Sub modif(id, Name, ens)
         Try
             Dim dialog As DialogResult
-            dialog = MessageBox.Show("do you reelly whant to add ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dialog = MessageBox.Show("do you reelly whant to Modify ", "text", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.Yes Then
                 Dim req As String = " 
 update FPlanComptable set C_TYPE ='" & id & "',C_LIBELLE ='" & Name & "' where C_CODE ='" & ens & "'"

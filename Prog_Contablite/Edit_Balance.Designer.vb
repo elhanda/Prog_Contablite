@@ -95,7 +95,7 @@ Partial Class Edit_Balance
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Indigo
-        Me.Button2.Location = New System.Drawing.Point(1167, 450)
+        Me.Button2.Location = New System.Drawing.Point(1024, 761)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(122, 40)
         Me.Button2.TabIndex = 121
@@ -106,7 +106,7 @@ Partial Class Edit_Balance
         '
         Me.Appercu.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Appercu.ForeColor = System.Drawing.Color.Indigo
-        Me.Appercu.Location = New System.Drawing.Point(1167, 360)
+        Me.Appercu.Location = New System.Drawing.Point(169, 761)
         Me.Appercu.Name = "Appercu"
         Me.Appercu.Size = New System.Drawing.Size(122, 40)
         Me.Appercu.TabIndex = 123
@@ -286,7 +286,7 @@ Partial Class Edit_Balance
         '
         Me.Afficher.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Afficher.ForeColor = System.Drawing.Color.Indigo
-        Me.Afficher.Location = New System.Drawing.Point(1167, 274)
+        Me.Afficher.Location = New System.Drawing.Point(22, 761)
         Me.Afficher.Name = "Afficher"
         Me.Afficher.Size = New System.Drawing.Size(129, 40)
         Me.Afficher.TabIndex = 137
@@ -364,7 +364,7 @@ Partial Class Edit_Balance
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Highlight
-        Me.ClientSize = New System.Drawing.Size(1308, 813)
+        Me.ClientSize = New System.Drawing.Size(1181, 813)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label12)

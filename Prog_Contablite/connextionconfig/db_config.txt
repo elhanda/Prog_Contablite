@@ -1,4 +1,4 @@
-Server=DESKTOP-PAIF7LI
+Server=DESKTOP-C826HA4\SQLEXPRESS
 IntegratedSecurity=True
 Username=
 Password=

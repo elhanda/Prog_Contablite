@@ -12,9 +12,11 @@ Public Class Form_Choix
 
         Dim choix = ComboBox1.SelectedIndex
         If choix = 0 Then
+            Me.Hide()
             Access.Show()
         Else
             If choix = 1 Then
+                Hide()
                 Form_Soc.Show()
 
             End If
